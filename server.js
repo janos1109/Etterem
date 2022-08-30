@@ -9,11 +9,11 @@ app.set("view engine", "ejs");      //Megadjuk, hogy EJS sablonokat használunk.
 //Ezt az app objektum get metódusával tudjuk megtenni. Az első paraméter azt adja meg, hogy a kezdő oldal (root) kérés esetén kell lefuttatni a második helyen megadott callback függvényt.
 //A callback függvény eéső paramétere a kérés (request), a második a válasz (respond). A paramétereknek tetszőleges nevet adhatunk.
 app.get('/', (request, response) => {
-    response.sendFile(__dirname + '/client/views/index.html');
+    response.sendFile(__dirname + '/views/index.ejs');
 });
 
 app.get('/order', (request, response) => {
-    response.sendFile(__dirname + '/client/views/order.html');      //A sendFile metódussal a szerver egy fájlt küld a kliensnek válaszként a kérdésre. A __dirname változó a JavaScript fájl elérési útja a szerveren.
+    response.sendFile(__dirname + '/views/order.html');      //A sendFile metódussal a szerver egy fájlt küld a kliensnek válaszként a kérdésre. A __dirname változó a JavaScript fájl elérési útja a szerveren.
 });
 
 //Azt hogy mi történjen post kérés esetén, az app.post metódussal adhatjuk meg.
