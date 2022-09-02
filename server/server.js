@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 const mysql = require('mysql');
+const cors = require('cors');
+app.use(cors());
 
 const pool = mysql.createPool({
     host: 'localhost:3306',
