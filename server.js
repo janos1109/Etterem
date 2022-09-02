@@ -1,21 +1,16 @@
 const express = require('express');
 const app = express();
-app.use(express.urlencoded({extended: true}));
-app.set("view engine", "ejs");
+app.use(express.json());
+const mysql = require('mysql');
 
-app.get('/', (request, response) => {
-    response.render(__dirname + '/views/index.ejs');
+const pool = mysql.createPool({
+    host: 'localhost:3306',
+    user: 'root',
+    password: '',
+    database: 'dolceVita'
 });
+const port = 3000;
 
-app.get('/order', (request, response) => {
-    response.sendFile(__dirname + '/views/order.html');
-});
-
-app.post("/", function(request, response) {
-    console.log(request.body);
-    response.send("Köszönöm!");
-})
-
-app.listen(3000, () => {
-    console.log("Szerver elindítva a 3000-es porton...");
+app.listen(port, () => {
+    console.log(`Szerver elindítva a ${port}-es porton...`);
 });
