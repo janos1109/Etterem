@@ -10,7 +10,7 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
     <!-- ***Menü*** -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-5">
         <div class="container">
             <a class="navbar-brand" href="index.html">Dolce Vita</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
@@ -18,7 +18,7 @@
             </button>
             <div class="collapse navbar-collapse" id="menu">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link" href="menu.html">Étlap</a>
+                    <a class="nav-link active" href="menu.html">Étlap</a>
                     <a class="nav-link" href="order.html">Házhozszállítás</a>
                     <a class="nav-link" href="booking.html">Asztalfoglalás</a>
                     <a class="nav-link" href="blog.html">Blog</a>
@@ -30,75 +30,68 @@
         </div>
     </nav>
 
-    <!-- ***Diasor*** -->
-    <div class="container">
-        <section>
-            <div id="diasor" class="carousel slide my-4 p-4 bg-dark rounded" data-bs-ride="carousel" style="--bs-bg-opacity: .75;">
-                <ol class="carousel-indicators py-3">
-                    <li data-bs-target="#diasor" data-bs-slide-to="0" class="active"></li>
-                    <li data-bs-target="#diasor" data-bs-slide-to="1"></li>
-                    <li data-bs-target="#diasor" data-bs-slide-to="2"></li>
-                    <li data-bs-target="#diasor" data-bs-slide-to="3"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="w-100" src="images/cuisine_900_350.jpg" alt="Glass, Red Wine, Cuisine">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h1>A legjobb olasz ételek</h1>
-                            <p>Csak válogatott minőségű alapanyagokból!</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100" src="images/cooker_900_350.jpg" alt="Fire, Cooker, Cookies">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h1>Próbálja ki desszertjeinket!</h1>
-                            <p>Helyben készült sütemények gazdag választéka várja minden vendégünket.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100" src="images/pizza_oven_900_350.jpg" alt="Pizza, Fireplace">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h1>Kemencében sült!!</h1>
-                            <p>Fatüzelésű kemencében sült ropogós, vékony tésztájú pizzák kínálatunkban!</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100" src="images/sandwich_900_350.jpg" alt="Sandwich, Bread, Delicious">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h1>Tovább bővül gazdag kínálatunk!</h1>
-                            <p>Ízletes szendvicsek hamarosan az étlapunkon!</p>
-                        </div>
-                    </div>
+    <!-- ***Étlap*** -->
+    <div class="container w-75" id="accordion">
+        <div class="card bg-dark text-light menu-top" style="--bs-bg-opacity: .75;">
+                <div class="card-header btn btn-dark collapsed" id="headingStarters" data-bs-toggle="collapse" data-bs-target="#collapseStarters" aria-expanded="true" aria-controls="collapseStarters">
+                    <h5 class="mb-0">Előételek</h5>
+                </div>
+            <div id="collapseStarters" class="collapse" aria-labelledby="headingStarters" data-bs-parent="#accordion">
+                <div class="card-body">
+                    Starters in cards will be here.
                 </div>
             </div>
-        </section>
-    </div>
-
-    <!-- ***Rólunk*** -->
-    <div class="container bg-dark text-light my-5 p-4 text-center rounded" style="--bs-bg-opacity: .75;">
-        <h2>Dolce Vita</h2>
-        <hr>
-        <h5>Egy kis Olaszország Budapest szívében</h5>
-        <p>Éttermünk több mint 10 éve az olasz konyha szerelmeseinek kedvenc törzshelye. 
-            Egyedülálló olaszos belső kialakításunknak köszönhetően vacsora közben úgy érezheti magát mintha egy igazi olasz 
-            étterembe vacsorázna. Éttermünk kínálatában megtalálhatja az olasz konyhaművészet remekeit.</p>
-        <hr>
-        <h5>Elérhetőségeink</h5>
-        <p>Dolce Vita olasz étterem<br>
-            Olasz utca 24<br>
-            Budapest, 1071 Magyarország<br>
-            Tel.: +36 1 111 1111<br>
-            E-mail: info@dolcevita.hu</p>
-        <hr>
-        <h5>Nyitvatartás</h5>
-        <p>HÉTFŐ 17:00 - 24:00<br>
-            KEDD 17:00 - 24:00<br>
-            SZERDA 17:00 - 24:00<br>
-            CSÜTÖRTÖK 17:00 - 24:00<br>
-            PÉNTEK 12:00 - 24:00<br>
-            SZOMBAT 12:00 - 24:00<br>
-            VASÁRNAP 12:00 - 24:00<br>
-            (Konyha bezár 23:30-kor.)</p>
+        </div>
+        <div class="card bg-dark text-light" style="--bs-bg-opacity: .75;">
+            <div class="card-header btn btn-dark collapsed" id="headingPastas" data-bs-toggle="collapse" data-bs-target="#collapsePastas" aria-expanded="false" aria-controls="collapsePastas">
+                <h5 class="mb-0">Tészták</h5>
+            </div>
+            <div id="collapsePastas" class="collapse" aria-labelledby="headingPastas" data-parent="#accordion">
+                <div class="card-body">
+                    Pastas in cards will be here.
+                </div>
+            </div>
+        </div>
+        <div class="card bg-dark text-light" style="--bs-bg-opacity: .75;">
+            <div class="card-header btn btn-dark collapsed" data-bs-toggle="collapse" data-bs-target="#collapsePizzas" aria-expanded="false" aria-controls="collapsePizzas" id="headingPizzas">
+                <h5 class="mb-0">Pizzák</h5>
+            </div>
+            <div id="collapsePizzas" class="collapse" aria-labelledby="headingPizzas" data-parent="#accordion">
+                <div class="card-body">
+                    Pizzas in cards will be here.
+                </div>
+            </div>
+        </div>
+        <div class="card bg-dark text-light" style="--bs-bg-opacity: .75;">
+            <div class="card-header btn btn-dark collapsed" data-bs-toggle="collapse" data-bs-target="#collapseMains" aria-expanded="false" aria-controls="collapseMains" id="headingMains">
+                <h5 class="mb-0">Főételek, Grillek & Saláták</h5>
+            </div>
+            <div id="collapseMains" class="collapse" aria-labelledby="headingMains" data-bs-parent="#accordion">
+                <div class="card-body">
+                    Mains in cards will be here.
+                </div>
+            </div>
+        </div>
+        <div class="card bg-dark text-light" style="--bs-bg-opacity: .75;">
+            <div class="card-header btn btn-dark collapsed" data-bs-toggle="collapse" data-bs-target="#collapseSides" aria-expanded="false" aria-controls="collapseSides" id="headingSides">
+                <h5 class="mb-0">Köretek</h5>
+            </div>
+            <div id="collapseSides" class="collapse" aria-labelledby="headingSides" data-bs-parent="#accordion">
+                <div class="card-body">
+                    Sides in cards will be here.
+                </div>
+            </div>
+        </div>
+        <div class="card bg-dark text-light menu-bottom" style="--bs-bg-opacity: .75;">
+            <div class="card-header btn btn-dark collapsed" data-bs-toggle="collapse" data-bs-target="#collapseDesserts" aria-expanded="true" aria-controls="collapseDesserts" id="headingDesserts">
+                <h5 class="mb-0">Desszertek</h5>
+            </div>
+            <div id="collapseDesserts" class="collapse" aria-labelledby="headingDesserts" data-bs-parent="#accordion">
+                <div class="card-body">
+                    Desserts in cards will be here.
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- ***Lábléc*** -->
