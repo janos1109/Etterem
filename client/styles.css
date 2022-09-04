@@ -15,10 +15,6 @@ body {
 .order-top {
     margin-top: 10vh;
 }
-
-table td {
-    vertical-align: middle;
-}
 .card-header:not(.collapsed) {
     background: #ccc;
     color: #212529;

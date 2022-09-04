@@ -26,6 +26,18 @@ app.route("/menu")
         });
     });
 
+app.route("/menu/:id")
+    .get(function (req, res) {
+        const q = "SELECT * FROM menu_item WHERE id = ?";
+        pool.query(q, [req.params.id], function (error, result) {
+            if (!error) {
+                res.send(result);
+            } else {
+                res.send(error);
+            }
+        });
+    });
+
 app.listen(port, () => {
     console.log(`Szerver elindítva a ${port}-es porton...`);
 });
