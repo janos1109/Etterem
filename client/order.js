@@ -1,3 +1,5 @@
+const cart = [];
+
 function betoltes() {
     const url = 'http://localhost:3000/menu';
     fetch(url)
@@ -19,3 +21,4 @@ function betoltes() {
         };
 
 betoltes();
+

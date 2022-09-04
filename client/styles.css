@@ -3,12 +3,7 @@ body {
     background-size: cover;
     padding-top: 56px;
     font-family: 'Montserrat', sans-serif;
-    /*height: 100vh;*/
 }
-
-/*.szovegdoboz {
-    background-color: #1714149c;
-}*/
 
 #diasor {
     border: #ccc 25px;
@@ -17,9 +12,6 @@ body {
 .menu-top {
     margin-top: 20vh;
 }
-/*.menu-bottom {
-    margin-bottom: 20vh;
-}*/
 .order-top {
     margin-top: 10vh;
 }
