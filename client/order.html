@@ -38,80 +38,88 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="card bg-dark text-light order-top" style="--bs-bg-opacity: .75;">
-                    <div class="card-header btn btn-dark collapsed" id="headingStarters" data-bs-toggle="collapse"
+                    <div class="card-header btn btn-dark collapsed border border-secondary" id="headingStarters" data-bs-toggle="collapse"
                         data-bs-target="#collapseStarters" aria-expanded="true" aria-controls="collapseStarters">
-                        <h5 class="mb-0">Előételek</h5>
+                        <h5 class="mb-0">Starters</h5>
                     </div>
                     <div id="collapseStarters" class="collapse" aria-labelledby="headingStarters"
                         data-bs-parent="#accordion">
-                        <div class="card-body">
-                            Starters in cards will be here.
-                        </div>
+                        <div class="card-body" id="orderStarter"></div>
                     </div>
                 </div>
                 <div class="card bg-dark text-light" style="--bs-bg-opacity: .75;">
-                    <div class="card-header btn btn-dark collapsed" id="headingPastas" data-bs-toggle="collapse"
+                    <div class="card-header btn btn-dark collapsed border border-secondary" id="headingPastas" data-bs-toggle="collapse"
                         data-bs-target="#collapsePastas" aria-expanded="false" aria-controls="collapsePastas">
-                        <h5 class="mb-0">Tészták</h5>
+                        <h5 class="mb-0">Pastas</h5>
                     </div>
                     <div id="collapsePastas" class="collapse" aria-labelledby="headingPastas" data-parent="#accordion">
                         <div class="card-body">
-                            Pastas in cards will be here.
+                            <table class="table table-image text-light">
+                                <tbody id="orderPasta"></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
                 <div class="card bg-dark text-light" style="--bs-bg-opacity: .75;">
-                    <div class="card-header btn btn-dark collapsed" data-bs-toggle="collapse"
+                    <div class="card-header btn btn-dark collapsed border border-secondary" data-bs-toggle="collapse"
                         data-bs-target="#collapsePizzas" aria-expanded="false" aria-controls="collapsePizzas"
                         id="headingPizzas">
-                        <h5 class="mb-0">Pizzák</h5>
+                        <h5 class="mb-0">Pizzas</h5>
                     </div>
                     <div id="collapsePizzas" class="collapse" aria-labelledby="headingPizzas" data-parent="#accordion">
                         <div class="card-body">
-                            Pizzas in cards will be here.
+                            <table class="table table-image text-light">
+                                <tbody id="orderPizza"></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
                 <div class="card bg-dark text-light" style="--bs-bg-opacity: .75;">
-                    <div class="card-header btn btn-dark collapsed" data-bs-toggle="collapse"
+                    <div class="card-header btn btn-dark collapsed border border-secondary" data-bs-toggle="collapse"
                         data-bs-target="#collapseMains" aria-expanded="false" aria-controls="collapseMains"
                         id="headingMains">
-                        <h5 class="mb-0">Főételek, Grillek & Saláták</h5>
+                        <h5 class="mb-0">Mains, Grills & Salads</h5>
                     </div>
                     <div id="collapseMains" class="collapse" aria-labelledby="headingMains" data-bs-parent="#accordion">
                         <div class="card-body">
-                            Mains in cards will be here.
+                            <table class="table table-image text-light">
+                                <tbody id="orderMain"></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
                 <div class="card bg-dark text-light" style="--bs-bg-opacity: .75;">
-                    <div class="card-header btn btn-dark collapsed" data-bs-toggle="collapse"
+                    <div class="card-header btn btn-dark collapsed border border-secondary" data-bs-toggle="collapse"
                         data-bs-target="#collapseSides" aria-expanded="false" aria-controls="collapseSides"
                         id="headingSides">
-                        <h5 class="mb-0">Köretek</h5>
+                        <h5 class="mb-0">Sides</h5>
                     </div>
                     <div id="collapseSides" class="collapse" aria-labelledby="headingSides" data-bs-parent="#accordion">
                         <div class="card-body">
-                            Sides in cards will be here.
+                            <table class="table table-image text-light">
+                                <tbody id="orderSide"></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
                 <div class="card bg-dark text-light menu-bottom" style="--bs-bg-opacity: .75;">
-                    <div class="card-header btn btn-dark collapsed" data-bs-toggle="collapse"
+                    <div class="card-header btn btn-dark collapsed border border-secondary" data-bs-toggle="collapse"
                         data-bs-target="#collapseDesserts" aria-expanded="true" aria-controls="collapseDesserts"
                         id="headingDesserts">
-                        <h5 class="mb-0">Desszertek</h5>
+                        <h5 class="mb-0">Desserts</h5>
                     </div>
                     <div id="collapseDesserts" class="collapse" aria-labelledby="headingDesserts"
                         data-bs-parent="#accordion">
                         <div class="card-body">
-                            Desserts in cards will be here.
+                            <table class="table table-image text-light">
+                                <tbody id="orderDessert"></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 bg-dark text-light rounded order-top" style="--bs-bg-opacity: .75;">
-                <h3 class="p-3">Rendelésed:</h3>
+            <div class="col-md-4 bg-dark text-light rounded order-top border border-secondary" style="--bs-bg-opacity: .75;">
+                <h3 class="p-3 pt-5">Rendelésed:</h3>
                 <hr>
             </div>
         </div>
@@ -119,7 +127,7 @@
     </div>
 
     <!-- ***Lábléc*** -->
-    <footer class="mt-auto py-2 bg-dark text-light text-center" style="--bs-bg-opacity: .75;">
+    <footer class="mt-auto py-2 bg-dark text-light text-center border-top border-secondary" style="--bs-bg-opacity: .75;">
         <div class="container">
             <h6>DOLCE VITA</h6>
             <p>1071 Budapest, Olasz utca 24</p>
@@ -161,6 +169,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
+    <script src="order.js"></script>
 </body>
 
 </html>

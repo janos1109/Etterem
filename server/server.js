@@ -6,12 +6,25 @@ const cors = require('cors');
 app.use(cors());
 
 const pool = mysql.createPool({
-    host: 'localhost:3306',
+    host: 'localhost',
+    port: 3306,
     user: 'root',
     password: '',
-    database: 'dolceVita'
+    database: 'dolcevita'
 });
 const port = 3000;
+
+app.route("/menu")
+    .get(function (req, res) {
+        const q = "SELECT * FROM menu_item";
+        pool.query(q, function (error, results) {
+            if (!error) {
+                res.send(results);
+            } else {
+                res.send(error);
+            }
+        });
+    });
 
 app.listen(port, () => {
     console.log(`Szerver elindítva a ${port}-es porton...`);
