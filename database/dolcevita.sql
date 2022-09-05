@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Sze 05. 12:02
+-- Létrehozás ideje: 2022. Sze 05. 18:54
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.12
 
@@ -109,6 +109,16 @@ CREATE TABLE `orders` (
   `messageFromUser` varchar(255) COLLATE utf8mb4_hungarian_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
+--
+-- A tábla adatainak kiíratása `orders`
+--
+
+INSERT INTO `orders` (`id`, `name`, `address`, `city`, `postcode`, `country`, `mobile`, `email`, `createdAt`, `total`, `messageFromUser`) VALUES
+(109, 'Popovics János', 'Magyar út 2', 'Budapest', '1071', 'Magyarország', '06 70 123 1234', 'popovicsjani@example.com', '2022-09-05 18:40:30', 21000, ''),
+(110, 'Török László', 'Török utca 23', 'Budapest', '1031', 'Magyarország', '06 20 234 2345', 'torok@example.com', '2022-09-05 18:44:23', 19000, '10 perccel előtte hívjon fel a futár.'),
+(111, 'Szabadi Márk', 'Szabad utca 12', 'Budapest', '1192', 'Magyarország', '06 30 987 9876', 'szabadi@example.com', '2022-09-05 18:47:08', 24000, 'Rossz a kapucsengő.'),
+(112, 'Kerekes Kata', 'Móricz köz 2', 'Budapest', '1089', 'Magyarország', '06 1 543 6789', 'kerekes@example.com', '2022-09-05 18:50:51', 11500, '');
+
 -- --------------------------------------------------------
 
 --
@@ -121,6 +131,30 @@ CREATE TABLE `order_item` (
   `itemId` int(11) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `order_item`
+--
+
+INSERT INTO `order_item` (`id`, `orderId`, `itemId`, `quantity`) VALUES
+(164, 109, 1, 2),
+(165, 109, 13, 1),
+(166, 109, 14, 1),
+(167, 109, 37, 2),
+(168, 109, 45, 1),
+(169, 109, 46, 1),
+(170, 110, 30, 1),
+(171, 110, 34, 1),
+(172, 110, 36, 1),
+(173, 110, 35, 1),
+(174, 110, 43, 2),
+(175, 111, 1, 1),
+(176, 111, 21, 1),
+(177, 111, 22, 1),
+(178, 111, 27, 1),
+(179, 111, 46, 2),
+(180, 112, 29, 1),
+(181, 112, 28, 1);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -160,13 +194,13 @@ ALTER TABLE `menu_item`
 -- AUTO_INCREMENT a táblához `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT a táblához `order_item`
 --
 ALTER TABLE `order_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
 
 --
 -- Megkötések a kiírt táblákhoz
