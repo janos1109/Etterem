@@ -37,6 +37,38 @@ app.route("/menu/:id")
             }
         });
     });
+   
+app.route("/order")
+    .post(function (req, res) {
+        const q = 'INSERT INTO orders (name, address, city, postcode, country, mobile, email, createdAt, total, messageFromUser)' +
+                    'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
+        pool.query(q, [req.body.name, req.body.address, req.body.city, req.body.postcode, req.body.country,
+            req.body.mobile, req.body.email, req.body.createdAt, req.body.total, req.body.messageFromUser],
+            function (error, result) {
+                if (!error) {
+                    res.send(result);
+                } else {
+                    res.send(error);
+                }
+            });
+            
+        });
+
+app.route("/orderitems")
+    .post(function (req, res) {
+        const q = 'INSERT INTO order_item (orderId, itemId, quantity) VALUES (?, ?, ?);'
+        let orderedItems = req.body.orderedItems;
+        orderedItems.forEach(o => {
+            pool.query(q, [req.body.orderId, o.id, o.quantity], 
+                function(error, result) {
+                    if (!error) {
+                        res.send(result);
+                    } else {
+                        res.send(error);
+                    }
+                });
+        });
+    });
 
 app.listen(port, () => {
     console.log(`Szerver elindítva a ${port}-es porton...`);

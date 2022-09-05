@@ -19,3 +19,10 @@ body {
     background: #ccc;
     color: #212529;
 }
+
+input:not(:placeholder-shown), textarea {
+    background-color:  #212529BF!important;
+ }
+ input:placeholder-shown {
+    background-color:  #ffffff!important;
+ }

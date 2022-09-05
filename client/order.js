@@ -1,13 +1,14 @@
-const cart = [];
+let cart = [];
 let sum = 0;
 
 betoltes();
 updateCartList();
 
 function betoltes() {
-    if (sessionStorage.getItem('cartItems') !== null) {
-        alert(JSON.parse(sessionStorage.getItem('cartItems')));
-    }
+    /*if (sessionStorage.cartItems != null) {
+        cart = JSON.parse(sessionStorage.cartItems);
+    }*/
+    document.getElementById('')
     const url = 'http://localhost:3000/menu';
     fetch(url)
         .then((response) => response.json())
@@ -74,7 +75,7 @@ function updateCartList() {
         sum = 0;
         cart.forEach(c => {
             cartElem.innerHTML +=
-                '<div id="incart' + index + '" class="row py-2 border-top border-secondary">' +
+                '<div class="row py-2 border-top border-secondary">' +
                     '<div class="col-12 my-auto text-warning">' + c.name + '</div>' +
                     '<div class="col-sm-5 my-auto">' + c.quantity + ' x ' + c.price + ' Ft</div>' +
                     '<div class="col-sm-5 my-auto">' + (c.quantity * c.price) + ' Ft</div>' +
@@ -91,6 +92,6 @@ function updateCartList() {
 
 document.getElementById('btnOrder').onclick = function (e) {
     e.preventDefault();
-    sessionStorage.setItem('cartItems', JSON.stringify(cart));
-    window.open('placeorder.html');
+    sessionStorage.cartItems = JSON.stringify(cart);
+    window.open('placeorder.html', '_self');
 }
