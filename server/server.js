@@ -57,17 +57,14 @@ app.route("/order")
 app.route("/orderitems")
     .post(function (req, res) {
         const q = 'INSERT INTO order_item (orderId, itemId, quantity) VALUES (?, ?, ?);'
-        let orderedItems = req.body.orderedItems;
-        orderedItems.forEach(o => {
-            pool.query(q, [req.body.orderId, o.id, o.quantity], 
-                function(error, result) {
-                    if (!error) {
-                        res.send(result);
-                    } else {
-                        res.send(error);
-                    }
-                });
-        });
+        pool.query(q, [req.body.orderId, req.body.orderItems.id, req.body.orderItems.quantity],
+            function(error, result) {
+                if (!error) {
+                    res.send(result);
+                } else {
+                    res.send(error);
+                }
+            });
     });
 
 app.listen(port, () => {

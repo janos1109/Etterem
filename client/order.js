@@ -5,9 +5,9 @@ betoltes();
 updateCartList();
 
 function betoltes() {
-    /*if (sessionStorage.cartItems != null) {
+    if (sessionStorage.cartItems != null) {
         cart = JSON.parse(sessionStorage.cartItems);
-    }*/
+    }
     document.getElementById('')
     const url = 'http://localhost:3000/menu';
     fetch(url)
@@ -65,6 +65,8 @@ function updateCartList() {
     const cartElem = document.getElementById('cart');
     const sumElem = document.getElementById('osszesen');
 
+    sessionStorage.cartItems = JSON.stringify(cart);
+    
     if(cart.length === 0) {
         cartElem.innerHTML = 'Üres a kosarad!';
         sumElem.innerHTML = '';

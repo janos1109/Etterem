@@ -55,24 +55,18 @@ function sendOrder(name, email, mobile, address, city, postcode, country, messag
             "email": email,
             "createdAt": getCurrentDateTime(),
             "total": sum,
-            "messageFromUser": message,
-            "orderedItems": cart
+            "messageFromUser": message
         })
     })
         .then((response) => response.json())
-        .then(json => saveOrderItemsToDB(json.insertId))
-        .then(() => {
-            alert('Köszönjük!');
-            sessionStorage.removeItem('cartItems');
-        })
-        .then(() => window.open('order.html', '_self'))
-        .catch(err => {
-            console.log(err);
-            alert('Hiba történt!');
-        });
+        .then(json => sessionStorage.orderId = json.insertId)
+        .then(() => cart.forEach(c => saveOrderItemsToDB(sessionStorage.orderId, c)))
+        .then(() => sessionStorage.removeItem('cartItems'))
+        .then(() => showMessageAndQuit())
+        .catch(err => console.log(err));
 }
 
-function saveOrderItemsToDB(orderId) {
+ function saveOrderItemsToDB(orderId, c) {
     const url= 'http://localhost:3000/orderitems';
     fetch(url, {
         method: 'POST',
@@ -81,15 +75,12 @@ function saveOrderItemsToDB(orderId) {
         },
         body: JSON.stringify({
             "orderId": orderId,
-            "orderedItems": cart
+            "orderItems": c
         })
     })
         .then((response) => response.json())
         .then(json => console.log(json))
-        .catch(err => {
-            console.log(err);
-            alert('Hiba történt2!');
-        });
+        .catch(err => console.log(err));
 }
 
 function getCurrentDateTime() {
@@ -98,4 +89,16 @@ function getCurrentDateTime() {
     let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     let dateTime = date+' '+time;
     return dateTime;
+}
+
+function showMessageAndQuit() {
+    swal({
+        title: 'Sikeres rendelés!',
+        text: 'Siker',
+        icon: 'success',
+        button: 'Ok'
+    });
+    setTimeout(() => {
+        window.open('order.html', '_self');
+    }, 3000);
 }
