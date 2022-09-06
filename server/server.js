@@ -37,7 +37,7 @@ app.get('/menu/:id', (req, res) => {
 app.post('/order', (req, res) => {
         const q = 'INSERT INTO orders (name, address, city, postcode, country, ' +
                     'mobile, email, createdAt, total, messageFromUser, visszavont)' +
-                    'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
+                    'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
         pool.query(q, 
                 [req.body.name, 
                 req.body.address, 
