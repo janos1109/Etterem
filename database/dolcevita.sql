@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Sze 05. 18:54
+-- Létrehozás ideje: 2022. Sze 06. 19:14
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.12
 
@@ -106,18 +106,20 @@ CREATE TABLE `orders` (
   `email` varchar(60) COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
   `createdAt` datetime DEFAULT NULL,
   `total` int(11) DEFAULT NULL,
-  `messageFromUser` varchar(255) COLLATE utf8mb4_hungarian_ci DEFAULT NULL
+  `messageFromUser` varchar(255) COLLATE utf8mb4_hungarian_ci DEFAULT NULL,
+  `visszavont` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `orders`
 --
 
-INSERT INTO `orders` (`id`, `name`, `address`, `city`, `postcode`, `country`, `mobile`, `email`, `createdAt`, `total`, `messageFromUser`) VALUES
-(109, 'Popovics János', 'Magyar út 2', 'Budapest', '1071', 'Magyarország', '06 70 123 1234', 'popovicsjani@example.com', '2022-09-05 18:40:30', 21000, ''),
-(110, 'Török László', 'Török utca 23', 'Budapest', '1031', 'Magyarország', '06 20 234 2345', 'torok@example.com', '2022-09-05 18:44:23', 19000, '10 perccel előtte hívjon fel a futár.'),
-(111, 'Szabadi Márk', 'Szabad utca 12', 'Budapest', '1192', 'Magyarország', '06 30 987 9876', 'szabadi@example.com', '2022-09-05 18:47:08', 24000, 'Rossz a kapucsengő.'),
-(112, 'Kerekes Kata', 'Móricz köz 2', 'Budapest', '1089', 'Magyarország', '06 1 543 6789', 'kerekes@example.com', '2022-09-05 18:50:51', 11500, '');
+INSERT INTO `orders` (`id`, `name`, `address`, `city`, `postcode`, `country`, `mobile`, `email`, `createdAt`, `total`, `messageFromUser`, `visszavont`) VALUES
+(109, 'Popovics János', 'Magyar út 2', 'Budapest', '1071', 'Magyarország', '06 70 123 1234', 'popovicsjani@example.com', '2022-09-05 18:40:30', 21000, '', 0),
+(110, 'Török László', 'Török utca 23', 'Budapest', '1031', 'Magyarország', '06 20 234 2345', 'torok@example.com', '2022-09-05 18:44:23', 19000, '10 perccel előtte hívjon fel a futár.', 0),
+(111, 'Szabadi Márk', 'Szabad utca 12', 'Budapest', '1192', 'Magyarország', '06 30 987 9876', 'szabadi@example.com', '2022-09-05 18:47:08', 24000, 'Rossz a kapucsengő.', 0),
+(112, 'Kerekes Kata', 'Móricz köz 2', 'Budapest', '1089', 'Magyarország', '06 1 543 6789', 'kerekes@example.com', '2022-09-05 18:50:51', 11500, '', 0),
+(113, 'Jakab Ferenc', 'Parlament utca 3', 'Budapest', '1056', 'Magyarország', '06 30 564 1234', 'jakab@example.com', '2022-09-06 10:12:02', 6000, '', 0);
 
 -- --------------------------------------------------------
 
@@ -154,7 +156,8 @@ INSERT INTO `order_item` (`id`, `orderId`, `itemId`, `quantity`) VALUES
 (178, 111, 27, 1),
 (179, 111, 46, 2),
 (180, 112, 29, 1),
-(181, 112, 28, 1);
+(181, 112, 28, 1),
+(182, 113, 30, 1);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -194,13 +197,13 @@ ALTER TABLE `menu_item`
 -- AUTO_INCREMENT a táblához `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT a táblához `order_item`
 --
 ALTER TABLE `order_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
 
 --
 -- Megkötések a kiírt táblákhoz
