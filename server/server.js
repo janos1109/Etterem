@@ -4,6 +4,7 @@ app.use(express.json());
 const mysql = require('mysql');
 const cors = require('cors');
 app.use(cors());
+const bcrypt = require('bcrypt');
 
 const pool = mysql.createPool({
     host: 'localhost',
