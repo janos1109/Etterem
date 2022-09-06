@@ -110,16 +110,15 @@ function showMessageCancelAndQuit() {
     swal({
         title: 'Biztosan kilépsz?',
         icon: 'warning',
-        buttons: true,
-        dangerMode: true,
+        className: 'customx',
+        buttons: ['Nem', 'Igen'],
     })
     .then((willCancel) => {
         if (willCancel) {
             swal({
                 title: 'Szeretnéd törölni a kosarad tartalmát is?',
                 icon: 'warning',
-                buttons: true,
-                dangerMode: true,
+                buttons: ['Nem', 'Igen'],
             })
             .then((willDelete) => {
                 if (willDelete) {
