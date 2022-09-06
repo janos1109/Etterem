@@ -36,7 +36,7 @@ app.get('/menu/:id', (req, res) => {
 
 app.post('/order', (req, res) => {
         const q = 'INSERT INTO orders (name, address, city, postcode, country, ' +
-                    'mobile, email, createdAt, total, messageFromUser)' +
+                    'mobile, email, createdAt, total, messageFromUser, visszavont)' +
                     'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
         pool.query(q, 
                 [req.body.name, 
@@ -48,7 +48,8 @@ app.post('/order', (req, res) => {
                 req.body.email, 
                 req.body.createdAt, 
                 req.body.total, 
-                req.body.messageFromUser],
+                req.body.messageFromUser,
+                false],
             function (error, result) {
                 if (!error) res.send(result);
                 else res.send(error);
