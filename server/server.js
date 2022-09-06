@@ -9,11 +9,11 @@ require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
 const pool = mysql.createPool({
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: '',
-    database: 'dolcevita'
+    host: process.env.HOST,
+    port: process.env.PORT,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
 });
 const port = 3000;
 
