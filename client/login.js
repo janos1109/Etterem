@@ -8,7 +8,7 @@ document.getElementById('login').onclick = function (e) {
             'Content-type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify({
-            "name": document.getElementById('name').value,
+            "username": document.getElementById('username').value,
             "password": document.getElementById('password').value
         })
     })
@@ -17,11 +17,11 @@ document.getElementById('login').onclick = function (e) {
             return response.json();
         })
         .then(json => {
-            sessionStorage.token = json.token;
-            if (ok) document.location = 'admin.html';
+            document.getElementById('message').innerHTML = '<p class="text-danger p-3">' + json.message + '</p>';
+            if (ok) {
+                sessionStorage.token = json.token;
+                document.location = 'admin.html';
+            }
         })
-        .catch(err => {
-            console.log(err);
-            document.getElementById('message').innerHTML = '<p class="text-danger p-3">Hibás felhasználó és/vagy jelszó!</p>';
-        })
+        .catch(err => console.log(err));
 }
