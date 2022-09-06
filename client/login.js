@@ -1,5 +1,6 @@
 document.getElementById('login').onclick = function (e) {
     e.preventDefault();
+    let ok = false;
     const url = 'http://localhost:3000/login';
     fetch(url, {
         method: 'POST',
@@ -11,8 +12,14 @@ document.getElementById('login').onclick = function (e) {
             "password": document.getElementById('password').value
         })
     })
-        .then((response) => response.json())
-        .then(() => window.open('admin.html', '_self'))
+        .then((response) => {
+            ok = response.ok;
+            return response.json();
+        })
+        .then(json => {
+            sessionStorage.token = json.token;
+            if (ok) document.location = 'admin.html';
+        })
         .catch(err => {
             console.log(err);
             document.getElementById('message').innerHTML = '<p class="text-danger p-3">Hibás felhasználó és/vagy jelszó!</p>';
