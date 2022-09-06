@@ -110,7 +110,6 @@ function showMessageCancelAndQuit() {
     swal({
         title: 'Biztosan kilépsz?',
         icon: 'warning',
-        className: 'customx',
         buttons: ['Nem', 'Igen'],
     })
     .then((willCancel) => {
