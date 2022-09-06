@@ -23,7 +23,7 @@ function betoltes() {
 
 const form = document.getElementById('form');
 
-form.addEventListener('submit', function(e) {
+form.addEventListener('submit', (e) => {
     e.preventDefault();
     
     let name = document.getElementById('name').value;
