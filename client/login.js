@@ -15,6 +15,6 @@ document.getElementById('login').onclick = function (e) {
         .then(() => window.open('admin.html', '_self'))
         .catch(err => {
             console.log(err);
-            document.getElementById('message').innerHTML = 'Hibás felhasználó és/vagy jelszó!';
+            document.getElementById('message').innerHTML = '<p class="text-danger p-3">Hibás felhasználó és/vagy jelszó!</p>';
         })
 }
