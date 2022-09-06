@@ -75,7 +75,7 @@ app.post('/admin/login', (req, res) => {
     const admin = process.env.ADMIN;
     if (req.body.username != admin)
         return res.status(401).send({ message: "Hibás felhasználónév!"});
-    if (!bcrypt.compareSync(req.body.password, hash))
+    if (!bcrypt.compareSync(req.body.password, admin))
         return res.status(401).send({ message: 'Hibás jelszó!' });
     const token = jwt.sign(
         { password: req.body.password },
