@@ -84,6 +84,20 @@ app.post('/admin/login', (req, res) => {
     res.json({ token: token, message: 'Sikeres bejelentkezés.'});
 })
 
+// Token ellenőrzése
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if (!token)
+        return res.status(401).send({ message: 'Azonosítás szükséges!' });
+    jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+        if (err)
+            return res.status(403).send({ message: 'Nincs jogosultsága!' });
+        req.user = user;
+        next();
+    })
+}
+
 app.listen(port, () => {
     console.log(`Szerver elindítva a ${port}-es porton...`);
 });
