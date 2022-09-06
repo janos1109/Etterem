@@ -5,6 +5,8 @@ const mysql = require('mysql');
 const cors = require('cors');
 app.use(cors());
 const bcrypt = require('bcrypt');
+require('dotenv').config();
+const jwt = require('jsonwebtoken');
 
 const pool = mysql.createPool({
     host: 'localhost',
