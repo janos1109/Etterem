@@ -70,6 +70,20 @@ app.post('/orderitems', (req, res) => {
             });
     });
 
+// Bejelentkezés
+app.post('/admin/login', (req, res) => {
+    const admin = process.env.ADMIN;
+    if (req.body.username != admin)
+        return res.status(401).send({ message: "Hibás felhasználónév!"});
+    if (!bcrypt.compareSync(req.body.password, hash))
+        return res.status(401).send({ message: 'Hibás jelszó!' });
+    const token = jwt.sign(
+        { password: req.body.password },
+        process.env.TOKEN_SECRET,
+        { expiresIn: 3600 });
+    res.json({ token: token, message: 'Sikeres bejelentkezés.'});
+})
+
 app.listen(port, () => {
     console.log(`Szerver elindítva a ${port}-es porton...`);
 });
