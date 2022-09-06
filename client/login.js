@@ -1,7 +1,7 @@
 document.getElementById('login').onclick = function (e) {
     e.preventDefault();
     let ok = false;
-    const url = 'http://localhost:3000/login';
+    const url = 'http://localhost:3000/admin/login';
     fetch(url, {
         method: 'POST',
         headers: {
