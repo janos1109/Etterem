@@ -17,7 +17,7 @@ document.getElementById('login').onclick = function (e) {
             return response.json();
         })
         .then(json => {
-            document.getElementById('message').innerHTML = '<p class="text-danger p-3">' + json.message + '</p>';
+            document.getElementById('message').innerHTML = '<p class="text-light p-3">' + json.message + '</p>';
             if (ok) {
                 sessionStorage.token = json.token;
                 document.location = 'admin.html';
