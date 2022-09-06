@@ -20,8 +20,17 @@ document.getElementById('login').onclick = function (e) {
             document.getElementById('message').innerHTML = '<p class="text-light p-3">' + json.message + '</p>';
             if (ok) {
                 sessionStorage.token = json.token;
-                document.location = 'admin.html';
+                showMessageSuccessAndLogin(json.message);
             }
         })
         .catch(err => console.log(err));
+}
+
+function showMessageSuccessAndLogin(message) {
+    swal({
+        title: message,
+        icon: 'success',
+        button: 'Ok'
+    })
+    .then(() => document.location = 'admin.html');
 }

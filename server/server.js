@@ -82,7 +82,7 @@ app.post('/admin/login', (req, res) => {
         { password: req.body.password },
         process.env.TOKEN_SECRET,
         { expiresIn: 3600 });
-    res.json({ token: token, message: 'Sikeres bejelentkezés.'});
+    res.json({ token: token, message: 'Sikeres bejelentkezés!'});
 })
 
 // Token ellenőrzése
