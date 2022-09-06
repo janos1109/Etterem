@@ -15,8 +15,7 @@ const pool = mysql.createPool({
 });
 const port = 3000;
 
-app.route("/menu")
-    .get((req, res) => {
+app.get('/menu', (req, res) => {
         const q = "SELECT * FROM menu_item";
         pool.query(q, function (error, results) {
             if (!error) {
@@ -27,8 +26,7 @@ app.route("/menu")
         });
     });
 
-app.route("/menu/:id")
-    .get((req, res) => {
+app.get('/menu/:id', (req, res) => {
         const q = "SELECT * FROM menu_item WHERE id = ?";
         pool.query(q, [req.params.id], function (error, result) {
             if (!error) {
@@ -38,9 +36,8 @@ app.route("/menu/:id")
             }
         });
     });
-   
-app.route("/order")
-    .post((req, res) => {
+
+app.post('/order', (req, res) => {
         const q = 'INSERT INTO orders (name, address, city, postcode, country, mobile, email, createdAt, total, messageFromUser)' +
                     'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
         pool.query(q, [req.body.name, req.body.address, req.body.city, req.body.postcode, req.body.country,
@@ -55,8 +52,7 @@ app.route("/order")
             
         });
 
-app.route("/orderitems")
-    .post((req, res) => {
+app.post('/orderitems', (req, res) => {
         const q = 'INSERT INTO order_item (orderId, itemId, quantity) VALUES (?, ?, ?);'
         pool.query(q, [req.body.orderId, req.body.orderItems.id, req.body.orderItems.quantity],
             function(error, result) {
