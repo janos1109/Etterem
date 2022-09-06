@@ -38,6 +38,11 @@ form.addEventListener('submit', function(e) {
     sendOrder(name, email, mobile, address, city, postcode, country, message);
 })
 
+document.getElementById('btnCancel').onclick = function(e) {
+    e.preventDefault();
+    showMessageCancelAndQuit();
+}
+
 function sendOrder(name, email, mobile, address, city, postcode, country, message) {
     const url= 'http://localhost:3000/order';
     fetch(url, {
@@ -62,7 +67,7 @@ function sendOrder(name, email, mobile, address, city, postcode, country, messag
         .then(json => sessionStorage.orderId = json.insertId)
         .then(() => cart.forEach(c => saveOrderItemsToDB(sessionStorage.orderId, c)))
         .then(() => sessionStorage.removeItem('cartItems'))
-        .then(() => showMessageAndQuit())
+        .then(() => showMessageSuccessAndQuit())
         .catch(err => console.log(err));
 }
 
@@ -91,14 +96,37 @@ function getCurrentDateTime() {
     return dateTime;
 }
 
-function showMessageAndQuit() {
+function showMessageSuccessAndQuit() {
     swal({
         title: 'Sikeres rendelés!',
         text: 'Siker',
         icon: 'success',
         button: 'Ok'
+    })
+    .then(() => window.open('order.html', '_self'));
+}
+
+function showMessageCancelAndQuit() {
+    swal({
+        title: 'Biztosan kilépsz?',
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willCancel) => {
+        if (willCancel) {
+            swal({
+                title: 'Szeretnéd törölni a kosarad tartalmát is?',
+                icon: 'warning',
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    sessionStorage.removeItem('cartItems');
+                }
+            })
+            .then(() => window.open('order.html', '_self'))
+        }
     });
-    setTimeout(() => {
-        window.open('order.html', '_self');
-    }, 3000);
 }
