@@ -29,7 +29,7 @@ function betoltes() {
 };
 
 function btnHozzaad(id) {
-    const url = 'http://localhost:3000/menu/' + id;
+    const url = 'http://localhost:3000/menuitems/' + id;
     const qty = Number(document.getElementById('qty' + id).value);
 
     fetch(url)

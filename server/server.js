@@ -19,16 +19,16 @@ const port = 3000;
 
 app.get('/menu', (req, res) => {
         const q = "SELECT * FROM menu_item";
-        pool.query(q, function (error, results) {
+        pool.query(q, (error, results) => {
             if (!error) res.send(results);
             else res.send(error);
         });
     });
 
-app.get('/menu/:id', (req, res) => {
+app.get('/menuitems/:id', (req, res) => {
         const q = "SELECT * FROM menu_item WHERE id = ?";
         pool.query(q, [req.params.id], 
-            function (error, result) {
+            (error, result) => {
                 if (!error) res.send(result);
                 else res.send(error);
         });
@@ -50,7 +50,7 @@ app.post('/order', (req, res) => {
                 req.body.total, 
                 req.body.messageFromUser,
                 false],
-            function (error, result) {
+            (error, result) => {
                 if (!error) res.send(result);
                 else res.send(error);
             });
@@ -64,7 +64,7 @@ app.post('/orderitems', (req, res) => {
                 [req.body.orderId, 
                 req.body.orderItems.id, 
                 req.body.orderItems.quantity],
-            function(error, result) {
+            (error, result) => {
                 if (!error) res.send(result);
                 else res.send(error);
             });
@@ -98,6 +98,28 @@ function authenticateToken(req, res, next) {
         next();
     })
 }
+
+// Rendelések lekérése
+app.get('/admin/order', authenticateToken, (req, res) => {
+    const q = "SELECT * FROM orders WHERE visszavont = false ORDER BY createdAt DESC;";
+    pool.query(q, (error, results) => {
+        if (!error) res.send(results);
+        else res.send(error);
+    });
+});
+
+// Egy rendelés tételeinek lekérése
+app.get('/admin/order/:id', authenticateToken, (req, res) => {
+    const q = "SELECT menu_item.name AS name, menu_item.price AS price, " +
+                "order_item.quantity AS quantity FROM order_item " +
+                "JOIN menu_item ON menu_item.id = order_item.itemId " +
+                "WHERE orderId = ?;";
+    pool.query(q, [req.params.id], 
+        (error, results) => {
+            if (!error) res.send(results);
+            else res.send(error);
+    });
+});
 
 app.listen(port, () => {
     console.log(`Szerver elindítva a ${port}-es porton...`);
