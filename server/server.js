@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
-const mysql = require('mysql');
+require('dotenv').config();
 const cors = require('cors');
 app.use(cors());
 const bcrypt = require('bcrypt');
-require('dotenv').config();
 const jwt = require('jsonwebtoken');
+const mysql = require('mysql');
 
 const pool = mysql.createPool({
     host: process.env.HOST,
