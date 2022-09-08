@@ -17,6 +17,7 @@ const pool = mysql.createPool({
 });
 const port = 3000;
 
+// Menü lehívása
 app.get('/menu', (req, res) => {
     const q = "SELECT * FROM menu_item";
     pool.query(q, (error, results) => {
@@ -25,6 +26,7 @@ app.get('/menu', (req, res) => {
     });
 });
 
+// Egy menüelem lekérdezése
 app.get('/menuitems/:id', (req, res) => {
     const q = "SELECT * FROM menu_item WHERE id = ?";
     pool.query(q, [req.params.id],
@@ -34,6 +36,7 @@ app.get('/menuitems/:id', (req, res) => {
         });
 });
 
+// Rendelés rögzítése
 app.post('/order', (req, res) => {
     const q = 'INSERT INTO orders (name, address, city, postcode, country, ' +
         'mobile, email, createdAt, total, messageFromUser, visszavont)' +
@@ -57,6 +60,7 @@ app.post('/order', (req, res) => {
 
 });
 
+// Rendelés tételeinek rögzítése
 app.post('/orderitems', (req, res) => {
     const q = 'INSERT INTO order_item (orderId, itemId, quantity) ' +
         'VALUES (?, ?, ?);'
