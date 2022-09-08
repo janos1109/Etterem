@@ -17,7 +17,8 @@
         <div class="container">
             <a class="navbar-brand" href="javascript:null">Dolce Vita</a>
             <h4 class="text-light mt-3">Admin</h4>
-            <a class="nav-link text-warning border border-light rounded p-2" href="javascript:null" onclick="javascript:signOut()">Kijelentkezés</a>
+            <a class="nav-link text-warning border border-light rounded p-2" href="javascript:null"
+                onclick="javascript:signOut()">Kijelentkezés</a>
         </div>
     </nav>
 
@@ -25,27 +26,81 @@
     <div class="container">
         <div class="order-top rounded">
             <div class="row">
-                <button class="col-lg-2 col-md-4 col-sm-6 btn btn-large btn-dark border border-light mx-2" type="button" onclick="show('menuField')">
+                <button class="col-lg-3 col-md-4 col-6 btn btn-large btn-dark border border-light mx-2" type="button"
+                    onclick="toggleVisibility('menuField')">
                     Étlap szerkesztése
                 </button>
-                <button class="col-lg-2 col-md-4 col-sm-6 btn btn-large btn-dark border border-light mx-2" type="button" onclick="show('orderField')">
+                <button class="col-lg-3 col-md-4 col-6 btn btn-large btn-dark border border-light mx-2" type="button"
+                    onclick="toggleVisibility('orderField')">
                     Rendelések szerkesztése
                 </button>
             </div>
-            <div class="my-5" id="editingArea"></div>
+            <div class="my-3" id="editingArea">
+                <form id="form" class="p-3 bg-dark text-light order-top rounded border border-secondary w-75"
+                    style="--bs-bg-opacity: .75;">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <p class="p-2 text-warning">
+                                    <label for="fid" class="form-label">Id:</label>
+                                    <input type="text" id="fid" value="#" class="form-control form-text text-light"
+                                        disabled>
+                                </p>
+                                <p class="p-2 text-warning">
+                                    <label for="fname" class="form-label">Név:</label>
+                                    <input type="text" id="fname" class="form-control text-light" required>
+                                </p>
+                                <p class="p-2 text-warning">
+                                    <label for="fprice" class="form-label">Ár:</label>
+                                    <input type="text" id="fprice" class="form-control text-light" required>
+                                </p>
+                                <p class="p-2 text-warning">
+                                    <label for="fimg" class="form-label">Kép elérési helye:</label>
+                                    <input type="text" id="fimg" class="form-control text-light" required>
+                                </p>
+                                <p class="p-2 text-warning">
+                                    <label for="fcourse" class="form-label">Fogás:</label>
+                                    <select id="fcourse" class="form-select bg-dark text-light"
+                                        aria-label="Default select example">
+                                        <option value="Starter" selected>Előétel</option>
+                                        <option value="Pasta">Tészta</option>
+                                        <option value="Pizza">Pizza</option>
+                                        <option value="Main">Főétel, Grill, Saláta</option>
+                                        <option value="Side">Köret</option>
+                                        <option value="Dessert">Desszert</option>
+                                    </select>
+                                </p>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="m-4 text-center">
+                                    <button type="submit" id="btnSubmit"
+                                        class="w-100 btn btn-dark border border-light text-info">Új elem
+                                        hozzáadása</button>
+                                    <button type="button" id="btnCancel"
+                                        class="w-100 btn btn-dark border border-light text-danger"
+                                        onclick="refresh()">Mégse</button>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
             <div class="my-5" id="menuField"></div>
             <div class="my-5 row">
                 <div class="col-md-8 mb-5" id="orderField"></div>
-                <div class="col-md-4"><div class="sticky-top" id="itemField"></div>
+                <div class="col-md-4">
+                    <div class="sticky-top" id="itemField"></div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-        crossorigin="anonymous"></script>
-    <script src="admin.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+            integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+            crossorigin="anonymous"></script>
+        <script src="admin.js"></script>
 </body>
 
 </html>

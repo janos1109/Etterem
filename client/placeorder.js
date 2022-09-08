@@ -12,9 +12,9 @@ function betoltes() {
     cart.forEach(c => {
         cartElem.innerHTML +=
             '<div class="py-2 border-top border-secondary text-center">' +
-                '<div class="my-auto text-warning">' + c.name + '</div>' +
-                '<div class="my-auto">' + c.quantity + ' x ' + c.price + ' Ft</div>' +
-                '<div class="my-auto text-info">' + (c.quantity * c.price) + ' Ft</div>' +
+            '<div class="my-auto text-warning">' + c.name + '</div>' +
+            '<div class="my-auto">' + c.quantity + ' x ' + c.price + ' Ft</div>' +
+            '<div class="my-auto text-info">' + (c.quantity * c.price) + ' Ft</div>' +
             '</div>';
         sum += c.quantity * c.price;
         sumElem.innerHTML = '<h6 class="text-info p-3">Fizetendő: ' + sum + ' Ft</h6>';
@@ -25,7 +25,7 @@ const form = document.getElementById('form');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     let name = document.getElementById('name').value;
     let email = document.getElementById('email').value;
     let mobile = document.getElementById('mobile').value;
@@ -34,17 +34,17 @@ form.addEventListener('submit', (e) => {
     let postcode = document.getElementById('postcode').value;
     let country = document.getElementById('country').value;
     let message = document.getElementById('message').value;
-    
+
     sendOrder(name, email, mobile, address, city, postcode, country, message);
 })
 
-document.getElementById('btnCancel').onclick = function(e) {
+document.getElementById('btnCancel').onclick = function (e) {
     e.preventDefault();
     showMessageCancelAndQuit();
 }
 
 function sendOrder(name, email, mobile, address, city, postcode, country, message) {
-    const url= 'http://localhost:3000/order';
+    const url = 'http://localhost:3000/order';
     fetch(url, {
         method: 'POST',
         headers: {
@@ -71,8 +71,8 @@ function sendOrder(name, email, mobile, address, city, postcode, country, messag
         .catch(err => console.log(err));
 }
 
- function saveOrderItemsToDB(orderId, c) {
-    const url= 'http://localhost:3000/orderitems';
+function saveOrderItemsToDB(orderId, c) {
+    const url = 'http://localhost:3000/orderitems';
     fetch(url, {
         method: 'POST',
         headers: {
@@ -90,9 +90,9 @@ function sendOrder(name, email, mobile, address, city, postcode, country, messag
 
 function getCurrentDateTime() {
     let today = new Date();
-    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    let dateTime = date+' '+time;
+    let dateTime = date + ' ' + time;
     return dateTime;
 }
 
@@ -103,7 +103,7 @@ function showMessageSuccessAndQuit() {
         icon: 'success',
         button: 'Ok'
     })
-    .then(() => window.open('order.html', '_self'));
+        .then(() => window.open('order.html', '_self'));
 }
 
 function showMessageCancelAndQuit() {
@@ -112,19 +112,19 @@ function showMessageCancelAndQuit() {
         icon: 'warning',
         buttons: ['Nem', 'Igen'],
     })
-    .then((willCancel) => {
-        if (willCancel) {
-            swal({
-                title: 'Szeretnéd törölni a kosarad tartalmát is?',
-                icon: 'warning',
-                buttons: ['Nem', 'Igen'],
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    sessionStorage.removeItem('cartItems');
-                }
-            })
-            .then(() => window.open('order.html', '_self'))
-        }
-    });
+        .then((willCancel) => {
+            if (willCancel) {
+                swal({
+                    title: 'Szeretnéd törölni a kosarad tartalmát is?',
+                    icon: 'warning',
+                    buttons: ['Nem', 'Igen'],
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            sessionStorage.removeItem('cartItems');
+                        }
+                    })
+                    .then(() => window.open('order.html', '_self'))
+            }
+        });
 }
